@@ -1,0 +1,85 @@
+@import "@fontsource/ibm-plex-mono/latin-400.css";
+@import "@fontsource/ibm-plex-mono/latin-600.css";
+@import "@fontsource/ibm-plex-mono/cyrillic-400.css";
+@import "@fontsource/ibm-plex-mono/cyrillic-600.css";
+@import "tailwindcss";
+
+@theme {
+  --font-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  --color-bg: #050505;
+  --color-surface: #111111;
+  --color-border: #242424;
+  --color-text: #ededed;
+  --color-text-muted: #7a7a7a;
+  --color-accent: #ffffff;
+}
+
+:root {
+  color-scheme: dark;
+  font-family: var(--font-mono);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.05), transparent 38%),
+    linear-gradient(180deg, #090909 0%, #040404 100%);
+  color: var(--color-text);
+}
+
+body::before {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 100% 3px;
+  opacity: 0.18;
+  content: "";
+  pointer-events: none;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+@keyframes section-glow {
+  0% {
+    box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+    border-color: rgba(36, 36, 36, 0.8);
+  }
+  35% {
+    box-shadow: 0 0 28px rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+    border-color: rgba(36, 36, 36, 0.8);
+  }
+}
+
+.section-panel:target {
+  animation: section-glow 1.2s ease-out;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+::selection {
+  background: rgba(255, 255, 255, 0.18);
+}

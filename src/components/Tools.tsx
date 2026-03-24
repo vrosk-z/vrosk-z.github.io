@@ -1,0 +1,37 @@
+import { useLanguage } from '../hooks/useLanguage';
+
+export function Tools() {
+  const { t } = useLanguage();
+
+  return (
+    <section className="rounded-3xl border border-border/80 bg-surface/75 p-6 sm:p-8">
+      <p className="text-xs uppercase tracking-[0.3em] text-text-muted"># {t.tools.title}</p>
+      <div className="mt-6 flex flex-wrap gap-2">
+        {t.tools.items.map((tool) => {
+          const cls =
+            'rounded-md border border-border/80 px-3 py-1 text-xs uppercase tracking-[0.18em] text-text-muted transition';
+
+          if (tool.url) {
+            return (
+              <a
+                key={tool.name}
+                className={`${cls} hover:border-accent/60 hover:text-accent`}
+                href={tool.url}
+                rel="noreferrer"
+                target="_blank"
+              >
+                {tool.name}
+              </a>
+            );
+          }
+
+          return (
+            <span key={tool.name} className={cls}>
+              {tool.name}
+            </span>
+          );
+        })}
+      </div>
+    </section>
+  );
+}

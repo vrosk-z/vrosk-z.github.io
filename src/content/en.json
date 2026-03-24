@@ -1,0 +1,133 @@
+{
+  "hero": {
+    "name": "vrosk",
+    "tagline": "I see patterns where others see chaos",
+    "age": "16 y.o."
+  },
+  "about": {
+    "title": "about",
+    "text": "Backend dev. Python since I was 12, now digging into reverse engineering and figuring out how things actually work under the hood.\n\nI believe AI will write the code. Humans will architect the systems."
+  },
+  "skills": {
+    "title": "skills",
+    "items": [
+      { "name": "Python", "level": "primary", "label": "primary" },
+      { "name": "LLM", "level": "primary", "label": "primary" },
+      { "name": "Reverse", "level": "learning", "label": "learning" },
+      { "name": "Rust", "level": "learning", "label": "learning" },
+      { "name": "Linux", "level": "comfortable", "label": "comfortable" },
+      { "name": "Git", "level": "comfortable", "label": "comfortable" },
+      { "name": "SQL", "level": "comfortable", "label": "comfortable" }
+    ]
+  },
+  "services": {
+    "title": "services",
+    "items": [
+      "Telegram bots",
+      "REST API backends",
+      "Websites (full-stack)",
+      "Parsers & web scrapers",
+      "Automation & scripting",
+      "Reverse engineering & binary analysis"
+    ]
+  },
+  "tools": {
+    "title": "tools",
+    "items": [
+      { "name": "Zed", "url": "https://github.com/zed-industries/zed" },
+      { "name": "Claude", "url": "https://github.com/anthropics/claude-code" },
+      { "name": "Codex", "url": "https://github.com/openai/codex" },
+
+      { "name": "Ghidra", "url": "https://github.com/NationalSecurityAgency/ghidra" },
+      { "name": "x64dbg", "url": "https://github.com/x64dbg/x64dbg" }
+    ]
+  },
+  "contact": {
+    "title": "contact",
+    "text": "reach me on telegram",
+    "telegram": "@vrosk",
+    "url": "https://t.me/vrosk"
+  },
+  "nav": {
+    "about": "about",
+    "skills": "skills",
+    "services": "services"
+  },
+  "terminal": {
+    "windowTitle": "vrosk@web:~",
+    "welcome": "boot complete. type \"help\" to inspect the system.",
+    "mobileHint": "terminal is available on desktop screens.",
+    "helpTitle": "available commands",
+    "helpLines": [
+      "help               show command list",
+      "whoami             print current user",
+      "pwd                print working directory",
+      "ls / ls -a         list visible or all files",
+      "cat <file>         print file contents",
+      "./<binary>         execute virtual binary",
+      "neofetch           show system summary",
+      "about              print about.txt",
+      "skills             print skills.txt",
+      "projects           print project status",
+      "contact            print contact.txt",
+      "matrix on|off      toggle matrix rain",
+      "lang en|ru         switch language",
+      "clear              wipe terminal history",
+      "sudo rm -rf /      trigger site destruction"
+    ],
+    "commandNotFound": "bash: {cmd}: command not found",
+    "missingCatOperand": "cat: missing file operand",
+    "missingCdOperand": "bash: cd: missing operand",
+    "invalidMatrix": "usage: matrix on|off",
+    "invalidLang": "usage: lang en|ru",
+    "permissionDenied": "bash: cd: ..: Permission denied",
+    "noSuchDirectory": "bash: cd: {path}: No such file or directory",
+    "noSuchFile": "cat: {path}: No such file or directory",
+    "noSuchBinary": "bash: {path}: No such file or directory",
+    "messages": {
+      "matrixOn": "matrix rain enabled.",
+      "matrixOff": "matrix rain disabled.",
+      "langEn": "language switched to english.",
+      "langRu": "language switched to russian.",
+      "hack": "Nice try.",
+      "exit": "There is no escape.",
+      "projectsEmpty": "No projects published yet."
+    },
+    "neofetch": {
+      "aliasLabel": "alias",
+      "ageLabel": "age",
+      "focusLabel": "focus",
+      "stackLabel": "stack",
+      "contactLabel": "contact",
+      "langLabel": "lang",
+      "ageValue": "16",
+      "focusValue": "backend systems, reverse engineering",
+      "stackValue": "Python, Rust, Linux, SQL"
+    },
+    "files": {
+      "secret": "there is no spoon.",
+      "binary": "boot log recovered.\npattern recognition: online\ncuriosity threshold: exceeded\nresult: keep digging."
+    },
+    "destroy": {
+      "command": "[sudo] rm -rf / --no-preserve-root",
+      "done": "Everything is gone.",
+      "reload": "Just kidding. Reloading in 3s...",
+      "paths": [
+        "/usr/bin/life-choices",
+        "/home/vrosk/about.txt",
+        "/home/vrosk/skills.txt",
+        "/home/vrosk/what-is-this.bin",
+        "/var/log/ambition.log",
+        "/etc/passwd (oops)",
+        "/boot/reality",
+        "/dev/null (already empty)",
+        "/home/vrosk/.secret",
+        "/usr/share/hope",
+        "/ ... done."
+      ]
+    }
+  },
+  "footer": {
+    "label": "built by vrosk"
+  }
+}
