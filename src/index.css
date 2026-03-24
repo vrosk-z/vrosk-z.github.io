@@ -49,6 +49,7 @@ body::before {
 
 #root {
   min-height: 100vh;
+  min-height: 100dvh;
 }
 
 @keyframes section-glow {
@@ -78,6 +79,48 @@ a {
 button,
 input {
   font: inherit;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink-slow {
+  0%, 100% { opacity: 0.15; }
+  50% { opacity: 0.7; }
+}
+
+.animate-blink-slow {
+  animation: blink-slow 800ms ease-in-out 2;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in-up 180ms ease-out both;
+}
+
+@keyframes bounce-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 2s ease-in-out infinite;
 }
 
 ::selection {

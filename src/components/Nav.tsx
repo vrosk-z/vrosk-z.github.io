@@ -14,7 +14,8 @@ export function Nav() {
         </a>
         <div className="flex flex-wrap items-center justify-end gap-2 text-[11px] uppercase tracking-[0.22em] text-text-muted sm:gap-4">
           {LINKS.map((link) => (
-            <a key={link} className="whitespace-nowrap transition hover:text-accent" href={`#${link}`}>
+            <a key={link} className="hidden sm:inline group whitespace-nowrap transition hover:text-accent" href={`#${link}`}>
+              <span className="mr-0.5 opacity-0 transition-opacity group-hover:opacity-100">&gt;</span>
               {t.nav[link]}
             </a>
           ))}

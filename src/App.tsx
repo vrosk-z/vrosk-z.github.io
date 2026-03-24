@@ -18,7 +18,7 @@ export default function App() {
         className="pointer-events-none fixed inset-0 z-[1] bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.08),_transparent_48%)]"
       />
       <Nav />
-      <main className="relative z-10 flex min-h-screen flex-col">
+      <main className="relative z-10 flex min-h-[100dvh] flex-col">
         <div className="flex-1">
           <Hero />
           <div className="mx-auto grid max-w-6xl grid-cols-1 gap-x-10 gap-y-8 px-6 pb-10 lg:grid-cols-2">

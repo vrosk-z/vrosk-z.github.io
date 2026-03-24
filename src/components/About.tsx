@@ -1,11 +1,14 @@
+import { useFadeIn } from '../hooks/useFadeIn';
 import { useLanguage } from '../hooks/useLanguage';
 
 export function About() {
   const { t } = useLanguage();
   const paragraphs = t.about.text.split('\n\n');
+  const ref = useFadeIn<HTMLElement>();
 
   return (
     <section
+      ref={ref}
       id="about"
       className="section-panel scroll-mt-24 rounded-3xl border border-border/80 bg-surface/75 p-6 lg:col-span-2 sm:p-8"
     >

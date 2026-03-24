@@ -1,3 +1,4 @@
+import { useFadeIn } from '../hooks/useFadeIn';
 import { useLanguage } from '../hooks/useLanguage';
 
 const LEVEL_BARS: Record<string, string> = {
@@ -9,9 +10,11 @@ const LEVEL_BARS: Record<string, string> = {
 
 export function Skills() {
   const { t } = useLanguage();
+  const ref = useFadeIn<HTMLElement>();
 
   return (
     <section
+      ref={ref}
       id="skills"
       className="section-panel scroll-mt-24 rounded-3xl border border-border/80 bg-surface/75 p-6 sm:p-8"
     >
@@ -20,13 +23,13 @@ export function Skills() {
         {t.skills.items.map((skill) => (
           <div
             key={skill.name}
-            className="grid grid-cols-[1fr_auto_1fr] items-center gap-x-4 rounded-2xl border border-border/70 bg-black/20 px-4 py-3"
+            className="group grid gap-1 rounded-2xl border border-border/70 bg-black/20 px-4 py-3 text-center transition-colors duration-150 sm:grid-cols-[1fr_auto_1fr] sm:items-center sm:gap-x-4 sm:text-left"
           >
-            <span className="text-sm text-accent text-left">{skill.name}</span>
-            <span className="text-xs uppercase tracking-[0.18em] text-text-muted text-center">
+            <span className="text-sm text-accent transition-colors duration-150 group-hover:text-white sm:text-left">{skill.name}</span>
+            <span className="text-xs uppercase tracking-[0.18em] text-text-muted transition-colors duration-150 group-hover:text-white sm:text-center">
               {LEVEL_BARS[skill.level] ?? '[##########--------]'}
             </span>
-            <span className="text-xs uppercase tracking-[0.18em] text-text-muted/80 text-right">
+            <span className="text-xs uppercase tracking-[0.18em] text-text-muted/80 transition-colors duration-150 group-hover:text-white sm:text-right">
               {skill.label}
             </span>
           </div>

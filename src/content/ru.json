@@ -56,7 +56,7 @@
   "terminal": {
     "windowTitle": "vrosk@web:~",
     "welcome": "boot complete. type \"help\" to inspect the system.",
-    "mobileHint": "terminal is available on desktop screens.",
+    "mobileHint": "терминал доступен на десктопе.",
     "helpTitle": "available commands",
     "helpLines": [
       "help               show command list",
