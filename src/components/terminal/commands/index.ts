@@ -1,0 +1,15 @@
+import './cat';
+import './cd';
+import './echo';
+import './find';
+import './grep';
+import './head';
+import './ls';
+import './meta';
+import './mkdir';
+import './rm';
+import './special';
+import './system';
+import './tail';
+import './touch';
+import './wc';

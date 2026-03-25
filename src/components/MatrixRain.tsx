@@ -93,10 +93,14 @@ export function MatrixRain() {
       trails = Array.from({ length: columns }, () => (lowPower ? 5 : 7) + Math.floor(Math.random() * (lowPower ? 4 : 10)));
     };
 
+    let resizeTimer: ReturnType<typeof setTimeout>;
     const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      resetColumns();
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        resetColumns();
+      }, 150);
     };
 
     const draw = (timestamp: number) => {
@@ -144,6 +148,8 @@ export function MatrixRain() {
     return () => {
       window.cancelAnimationFrame(animationFrame);
       window.removeEventListener('resize', resize);
+      clearTimeout(resizeTimer);
+      glyphCache.clear();
     };
   }, [enabled]);
 

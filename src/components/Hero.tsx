@@ -1,40 +1,42 @@
 import { useEffect, useRef, useState } from 'react';
 import { useLanguage } from '../hooks/useLanguage';
 import { SiteDestroyAnimation } from './SiteDestroyAnimation';
-import { Terminal } from './Terminal';
+import { Terminal } from './terminal';
 
 function useTypingEffect(text: string, speed = 55, startDelay = 600) {
   const [displayed, setDisplayed] = useState('');
   const [done, setDone] = useState(false);
-  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const cancelRef = useRef<(() => void) | null>(null);
 
   useEffect(() => {
-    // Cleanup previous timers
-    if (timerRef.current) clearTimeout(timerRef.current);
-    if (intervalRef.current) clearInterval(intervalRef.current);
+    if (cancelRef.current) cancelRef.current();
 
     setDisplayed('');
     setDone(false);
 
-    let i = 0;
+    let cancelled = false;
+    let timer: ReturnType<typeof setTimeout>;
 
-    timerRef.current = setTimeout(() => {
-      intervalRef.current = setInterval(() => {
-        i++;
-        if (i >= text.length) {
-          setDisplayed(text);
-          setDone(true);
-          if (intervalRef.current) clearInterval(intervalRef.current);
-          return;
-        }
-        setDisplayed(text.slice(0, i));
-      }, speed + Math.random() * 30);
-    }, startDelay);
+    const typeNext = (i: number) => {
+      if (cancelled) return;
+      if (i > text.length) {
+        setDone(true);
+        return;
+      }
+      setDisplayed(text.slice(0, i));
+      timer = setTimeout(() => typeNext(i + 1), speed + Math.random() * 35);
+    };
+
+    const startTimer = setTimeout(() => typeNext(0), startDelay);
+
+    cancelRef.current = () => {
+      cancelled = true;
+      clearTimeout(startTimer);
+      clearTimeout(timer);
+    };
 
     return () => {
-      if (timerRef.current) clearTimeout(timerRef.current);
-      if (intervalRef.current) clearInterval(intervalRef.current);
+      if (cancelRef.current) cancelRef.current();
     };
   }, [text, speed, startDelay]);
 
