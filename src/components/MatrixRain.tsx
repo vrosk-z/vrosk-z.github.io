@@ -24,7 +24,7 @@ function isLowPowerDevice() {
   const lowCores = typeof nav.hardwareConcurrency === 'number' && nav.hardwareConcurrency <= 4;
   const lowMemory = typeof nav.deviceMemory === 'number' && nav.deviceMemory <= 4;
 
-  return lowCores || lowMemory || window.innerWidth < 768;
+  return lowCores || lowMemory;
 }
 
 export function MatrixRain() {
@@ -88,8 +88,8 @@ export function MatrixRain() {
 
     const resetColumns = () => {
       columns = Math.ceil(canvas.width / columnWidth);
-      drops = Array.from({ length: columns }, () => Math.random() * -40);
-      speeds = Array.from({ length: columns }, () => (lowPower ? 0.22 : 0.25) + Math.random() * 0.32);
+      drops = Array.from({ length: columns }, () => Math.random() * -40 * fontSize);
+      speeds = Array.from({ length: columns }, () => (lowPower ? 64 : 86) + Math.random() * (lowPower ? 52 : 70));
       trails = Array.from({ length: columns }, () => (lowPower ? 5 : 7) + Math.floor(Math.random() * (lowPower ? 4 : 10)));
     };
 
@@ -105,16 +105,22 @@ export function MatrixRain() {
 
     const draw = (timestamp: number) => {
       animationFrame = window.requestAnimationFrame(draw);
-      if (document.hidden || timestamp - lastFrame < frameDuration) {
+      if (document.hidden) {
+        lastFrame = timestamp;
         return;
       }
 
+      if (timestamp - lastFrame < frameDuration) {
+        return;
+      }
+
+      const delta = lastFrame === 0 ? frameDuration : timestamp - lastFrame;
       lastFrame = timestamp;
       context.fillStyle = lowPower ? 'rgba(0, 0, 0, 0.22)' : 'rgba(0, 0, 0, 0.16)';
       context.fillRect(0, 0, canvas.width, canvas.height);
 
       for (let columnIndex = 0; columnIndex < columns; columnIndex += 1) {
-        const head = Math.floor(drops[columnIndex]);
+        const head = Math.floor(drops[columnIndex] / fontSize);
 
         for (let trailIndex = 0; trailIndex < trails[columnIndex]; trailIndex += 1) {
           const row = head - trailIndex;
@@ -131,9 +137,9 @@ export function MatrixRain() {
           }
         }
 
-        drops[columnIndex] += speeds[columnIndex];
-        if (drops[columnIndex] * fontSize > canvas.height && Math.random() > 0.985) {
-          drops[columnIndex] = Math.random() * -20;
+        drops[columnIndex] += speeds[columnIndex] * (delta / 1000);
+        if (drops[columnIndex] > canvas.height + trails[columnIndex] * fontSize && Math.random() > 0.985) {
+          drops[columnIndex] = Math.random() * -20 * fontSize;
         }
       }
     };
