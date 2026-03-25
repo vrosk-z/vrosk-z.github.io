@@ -160,6 +160,9 @@
     }
   },
   "footer": {
-    "label": "built by vrosk"
+    "telegramLabel": "telegram",
+    "telegramUrl": "https://t.me/vrosk",
+    "githubLabel": "github",
+    "githubUrl": "https://github.com/vrosk-z"
   }
 }

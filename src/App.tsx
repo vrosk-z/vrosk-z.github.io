@@ -6,7 +6,7 @@ import { Services } from './components/Services';
 import { Skills } from './components/Skills';
 import { Tools } from './components/Tools';
 import { useLanguage } from './hooks/useLanguage';
-import { footerShell, mainGrid } from './lib/layout';
+import { cardShell, footerShell, mainGrid } from './lib/layout';
 
 export default function App() {
   const { t } = useLanguage();
@@ -25,7 +25,7 @@ export default function App() {
           <div className={mainGrid}>
             <About />
             <Skills />
-            <div className="flex flex-col gap-8">
+            <div className={`${cardShell} flex flex-col gap-8`}>
               <Services />
               <Tools />
             </div>
@@ -33,7 +33,27 @@ export default function App() {
         </div>
         <footer className="mt-auto border-t border-border/60">
           <div className={footerShell}>
-            {t.footer.label}
+            <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2">
+              <a
+                className="transition-colors duration-150 hover:text-text"
+                href={t.footer.telegramUrl}
+                rel="noreferrer"
+                target="_blank"
+              >
+                {t.footer.telegramLabel}
+              </a>
+              <span aria-hidden="true" className="text-border/90">
+                //
+              </span>
+              <a
+                className="transition-colors duration-150 hover:text-text"
+                href={t.footer.githubUrl}
+                rel="noreferrer"
+                target="_blank"
+              >
+                {t.footer.githubLabel}
+              </a>
+            </div>
           </div>
         </footer>
       </main>

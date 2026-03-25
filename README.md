@@ -94,16 +94,23 @@ GitHub Pages deploy is configured through `gh-pages`:
 npm run deploy
 ```
 
-If this repository is deployed as a project page, set the correct `base` in `vite.config.ts`.
+This project is configured for a GitHub Pages user site:
 
-Examples:
+- Repository: `vrosk-z/vrosk-z.github.io`
+- Vite base: `/`
+- Final URL: `https://vrosk-z.github.io/`
 
-- User page:
-  repository name `<username>.github.io`
-  `base: '/'`
-- Project page:
-  repository name `vrosk-portfolio`
-  `base: '/vrosk-portfolio/'`
+Typical publish flow:
+
+```bash
+git push origin main
+npm run deploy
+```
+
+In the repository settings, GitHub Pages should publish from:
+
+- Branch: `gh-pages`
+- Folder: `/(root)`
 
 ## Fonts
 
