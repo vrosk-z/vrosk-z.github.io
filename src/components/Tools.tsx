@@ -1,13 +1,14 @@
 import { useFadeIn } from '../hooks/useFadeIn';
 import { useLanguage } from '../hooks/useLanguage';
+import { sectionCard, sectionKicker } from '../lib/layout';
 
 export function Tools() {
   const { t } = useLanguage();
   const ref = useFadeIn<HTMLElement>();
 
   return (
-    <section ref={ref} className="rounded-3xl border border-border/80 bg-surface/75 p-6 sm:p-8">
-      <p className="text-xs uppercase tracking-[0.3em] text-text-muted"># {t.tools.title}</p>
+    <section ref={ref} id="tools" className={sectionCard}>
+      <p className={sectionKicker}># {t.tools.title}</p>
       <div className="mt-6 flex flex-wrap gap-2">
         {t.tools.items.map((tool) => {
           const cls =

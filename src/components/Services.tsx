@@ -1,5 +1,6 @@
 import { useFadeIn } from '../hooks/useFadeIn';
 import { useLanguage } from '../hooks/useLanguage';
+import { sectionCard, sectionKicker } from '../lib/layout';
 
 export function Services() {
   const { t } = useLanguage();
@@ -9,9 +10,9 @@ export function Services() {
     <section
       ref={ref}
       id="services"
-      className="section-panel scroll-mt-24 rounded-3xl border border-border/80 bg-surface/75 p-6 sm:p-8"
+      className={sectionCard}
     >
-      <p className="text-xs uppercase tracking-[0.3em] text-text-muted"># {t.services.title}</p>
+      <p className={sectionKicker}># {t.services.title}</p>
       <div className="mt-6 space-y-3 text-sm leading-7 text-text-muted">
         {t.services.items.map((item) => (
           <p key={item} className="font-mono transition-transform duration-150 hover:translate-x-1">

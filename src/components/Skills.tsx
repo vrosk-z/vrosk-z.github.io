@@ -1,5 +1,6 @@
 import { useFadeIn } from '../hooks/useFadeIn';
 import { useLanguage } from '../hooks/useLanguage';
+import { sectionCard, sectionKicker } from '../lib/layout';
 
 const LEVEL_BARS: Record<string, string> = {
   primary: '[############--]',
@@ -16,9 +17,9 @@ export function Skills() {
     <section
       ref={ref}
       id="skills"
-      className="section-panel scroll-mt-24 rounded-3xl border border-border/80 bg-surface/75 p-6 sm:p-8"
+      className={sectionCard}
     >
-      <p className="text-xs uppercase tracking-[0.3em] text-text-muted"># {t.skills.title}</p>
+      <p className={sectionKicker}># {t.skills.title}</p>
       <div className="mx-auto mt-6 flex max-w-2xl flex-col gap-3">
         {t.skills.items.map((skill) => (
           <div

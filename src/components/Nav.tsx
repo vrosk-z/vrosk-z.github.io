@@ -1,4 +1,5 @@
 import { useLanguage } from '../hooks/useLanguage';
+import { pageShell } from '../lib/layout';
 import { LanguageToggle } from './LanguageToggle';
 
 const LINKS = ['about', 'skills', 'services'] as const;
@@ -8,7 +9,7 @@ export function Nav() {
 
   return (
     <nav className="fixed inset-x-0 top-0 z-40 border-b border-border/60 bg-bg/80 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
+      <div className={`${pageShell} flex items-center justify-between gap-4 py-3`}>
         <a href="#top" className="text-xs font-semibold uppercase tracking-[0.35em] text-accent">
           vrosk
         </a>

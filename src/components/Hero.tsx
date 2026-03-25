@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useLanguage } from '../hooks/useLanguage';
+import { heroGrid, terminalShell } from '../lib/layout';
 import { SiteDestroyAnimation } from './SiteDestroyAnimation';
 import { Terminal } from './terminal';
 
@@ -52,10 +53,10 @@ export function Hero() {
     <>
       <section
         id="top"
-        className="relative flex min-h-[100dvh] items-center px-4 pb-16 pt-28 scroll-mt-24 sm:px-6"
+        className="relative flex min-h-[100dvh] items-center pb-16 pt-28 scroll-mt-24"
       >
-        <div className="mx-auto grid min-w-0 w-full max-w-6xl justify-items-center gap-12 lg:grid-cols-[minmax(0,1fr)_560px] lg:justify-items-stretch lg:items-center">
-          <div className="min-w-0 w-full max-w-[560px] space-y-6 text-left lg:max-w-none">
+        <div className={heroGrid}>
+          <div className={`${terminalShell} space-y-6 text-left lg:max-w-none`}>
             <div className="space-y-4">
               <div className="flex items-end justify-start gap-3 sm:gap-4">
                 <h1 className="text-[clamp(3rem,12vw,6rem)] font-semibold uppercase leading-none tracking-[0.06em] text-accent">
@@ -76,7 +77,7 @@ export function Hero() {
 
           </div>
 
-          <div className="flex min-w-0 w-full max-w-[560px] justify-center lg:ml-auto lg:justify-end">
+          <div className={`flex justify-center lg:ml-auto lg:justify-end ${terminalShell}`}>
             <Terminal onDestroy={() => setDestroying(true)} />
           </div>
         </div>
