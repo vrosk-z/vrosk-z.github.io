@@ -66,7 +66,7 @@ function RichOutputView({ output }: { output: RichOutput }) {
   return (
     <>
       {output.map((line, index) => (
-        <div key={index} className="leading-relaxed">
+        <div key={index} className="min-w-max whitespace-pre leading-relaxed">
           {line.map((span, spanIndex) => (
             <span key={spanIndex} className={spanClass(span.cls)}>
               {span.text}
@@ -279,7 +279,7 @@ export function Terminal({ onDestroy }: { onDestroy: () => void }) {
 
   return (
     <div
-      className="flex h-[400px] w-full max-w-[560px] flex-col overflow-hidden rounded-2xl border border-border/90 bg-surface/85 shadow-[0_0_40px_rgba(255,255,255,0.04),0_24px_80px_rgba(0,0,0,0.45)] backdrop-blur"
+      className="flex h-[300px] min-w-0 w-full max-w-full self-center flex-col overflow-hidden rounded-2xl border border-border/90 bg-surface/85 shadow-[0_0_40px_rgba(255,255,255,0.04),0_24px_80px_rgba(0,0,0,0.45)] backdrop-blur sm:h-[400px] sm:max-w-[560px]"
       onClick={() => {
         const selection = window.getSelection();
         if (!selection || selection.isCollapsed) {
@@ -287,7 +287,7 @@ export function Terminal({ onDestroy }: { onDestroy: () => void }) {
         }
       }}
     >
-      <div className="relative flex items-center justify-center border-b border-border/80 px-4 py-3">
+      <div className="relative flex items-center justify-center border-b border-border/80 px-3 py-3 sm:px-4">
         <span className="text-[11px] uppercase tracking-[0.3em] text-text-muted">
           {t.terminal.windowTitle}
         </span>
@@ -298,14 +298,16 @@ export function Terminal({ onDestroy }: { onDestroy: () => void }) {
         </div>
       </div>
 
-      <div className="flex-1 space-y-3 overflow-y-auto px-4 py-4 text-sm">
+      <div className="flex-1 overflow-auto px-3 py-3 text-[13px] sm:px-4 sm:py-4 sm:text-sm">
         {history.map((entry, index) => (
-          <div key={index} className="whitespace-pre-wrap break-words">
+          <div key={index} className="mb-3 min-w-max last:mb-0">
             {entry.type === 'input' ? (
-              <span className="text-accent">
-                <span className="mr-2 text-text-muted">{entry.prompt}</span>
-                {entry.text}
-              </span>
+              <div className="whitespace-pre text-accent">
+                <span className="mr-2 text-text-muted">
+                  {entry.prompt}
+                </span>
+                <span>{entry.text}</span>
+              </div>
             ) : (
               <RichOutputView output={entry.output} />
             )}
@@ -314,30 +316,34 @@ export function Terminal({ onDestroy }: { onDestroy: () => void }) {
         <div ref={bottomRef} />
       </div>
 
-      <div className="flex items-center border-t border-border/80 px-4 py-3 text-sm">
-        <span className="mr-3 text-text-muted">{buildPrompt(vfsRef.current)}</span>
-        <input
-          ref={inputRef}
-          autoComplete="off"
-          autoFocus
-          className="flex-1 bg-transparent text-accent outline-none placeholder:text-text-muted/50"
-          placeholder="help"
-          spellCheck={false}
-          type="text"
-          value={input}
-          onChange={(event) => {
-            setInput(event.target.value);
-            if (historyIndex !== null) {
-              setHistoryIndex(null);
-            }
-            if (tabMatches.length > 0) {
-              setTabMatches([]);
-              setTabIndex(0);
-              setTabPrefix('');
-            }
-          }}
-          onKeyDown={handleKeyDown}
-        />
+      <div className="flex min-w-0 items-center overflow-hidden border-t border-border/80 px-3 py-3 text-[13px] sm:px-4 sm:text-sm">
+        <span className="mr-3 shrink-0 whitespace-nowrap text-text-muted">
+          {buildPrompt(vfsRef.current)}
+        </span>
+        <div className="min-w-0 flex-1 overflow-hidden">
+          <input
+            ref={inputRef}
+            autoComplete="off"
+            autoFocus
+            className="w-full min-w-0 bg-transparent text-accent outline-none placeholder:text-text-muted/50"
+            placeholder="help"
+            spellCheck={false}
+            type="text"
+            value={input}
+            onChange={(event) => {
+              setInput(event.target.value);
+              if (historyIndex !== null) {
+                setHistoryIndex(null);
+              }
+              if (tabMatches.length > 0) {
+                setTabMatches([]);
+                setTabIndex(0);
+                setTabPrefix('');
+              }
+            }}
+            onKeyDown={handleKeyDown}
+          />
+        </div>
       </div>
     </div>
   );

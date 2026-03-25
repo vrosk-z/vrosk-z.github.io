@@ -36,7 +36,7 @@ describe('VirtualFS', () => {
   it('reads /etc/hostname', () => {
     const vfs = new VirtualFS();
 
-    expect(vfs.cat('/etc/hostname')).toBe('vrosk.github.io');
+    expect(vfs.cat('/etc/hostname')).toBe('vrosk-z.github.io');
   });
 
   it('returns ENOENT for missing opaque system files', () => {

@@ -49,5 +49,5 @@ registerCommand('history', () => emptyResult('history'));
 registerCommand('date', () => textResult(new Date().toString()));
 registerCommand('uptime', () => textResult(formatUptime()));
 registerCommand('uname', (cmd) => textResult(hasFlag(cmd, 'a') ? 'vroskOS 1.0.0 x86_64 GNU/Linux' : 'vroskOS'));
-registerCommand('hostname', () => textResult('vrosk.github.io'));
+registerCommand('hostname', () => textResult('vrosk-z.github.io'));
 registerCommand('id', () => textResult('uid=1000(vrosk) gid=1000(dev) groups=1000(dev),27(sudo)'));

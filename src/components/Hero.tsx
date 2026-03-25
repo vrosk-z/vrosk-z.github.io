@@ -52,12 +52,12 @@ export function Hero() {
     <>
       <section
         id="top"
-        className="relative flex min-h-[100dvh] items-center px-6 pb-16 pt-28 scroll-mt-24"
+        className="relative flex min-h-[100dvh] items-center px-4 pb-16 pt-28 scroll-mt-24 sm:px-6"
       >
-        <div className="mx-auto grid w-full max-w-6xl gap-12 lg:grid-cols-[minmax(0,1fr)_560px] lg:items-center">
-          <div className="space-y-6">
+        <div className="mx-auto grid min-w-0 w-full max-w-6xl justify-items-center gap-12 lg:grid-cols-[minmax(0,1fr)_560px] lg:justify-items-stretch lg:items-center">
+          <div className="min-w-0 w-full max-w-[560px] space-y-6 text-left lg:max-w-none">
             <div className="space-y-4">
-              <div className="flex items-end gap-3 sm:gap-4">
+              <div className="flex items-end justify-start gap-3 sm:gap-4">
                 <h1 className="text-[clamp(3rem,12vw,6rem)] font-semibold uppercase leading-none tracking-[0.06em] text-accent">
                   {t.hero.name}
                 </h1>
@@ -65,7 +65,7 @@ export function Hero() {
                   {t.hero.age}
                 </span>
               </div>
-              <p className="max-w-2xl text-lg leading-relaxed text-text-muted sm:text-xl">
+              <p className="max-w-[560px] text-lg leading-relaxed text-text-muted sm:text-xl">
                 <span className="mr-2 text-accent">&gt;</span>
                 {typedTagline.length === 0 ? <span className="animate-blink-slow">...</span> : typedTagline}
                 {typedTagline.length > 0 && (
@@ -74,14 +74,9 @@ export function Hero() {
               </p>
             </div>
 
-            <div className="lg:hidden">
-              <p className="rounded-2xl border border-border/80 bg-surface/70 px-4 py-3 text-sm text-text-muted">
-                {t.terminal.mobileHint}
-              </p>
-            </div>
           </div>
 
-          <div className="hidden lg:block">
+          <div className="flex min-w-0 w-full max-w-[560px] justify-center lg:ml-auto lg:justify-end">
             <Terminal onDestroy={() => setDestroying(true)} />
           </div>
         </div>

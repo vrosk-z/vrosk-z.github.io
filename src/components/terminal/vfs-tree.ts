@@ -84,7 +84,7 @@ export const STATIC_TREE: VFSNode = n('dir', '', 0o755, {
     }),
     n('dir', 'etc', 0o755, {
       children: [
-        n('file', 'hostname', 0o644, { content: 'vrosk.github.io' }),
+        n('file', 'hostname', 0o644, { content: 'vrosk-z.github.io' }),
         n('file', 'issue', 0o644, { content: 'vroskOS 1.0.0 \\n \\l' }),
         n('file', 'passwd', 0o644, {
           content: 'root:x:0:0:root:/root:/bin/bash\nvrosk:x:1000:1000:vrosk:/home/vrosk:/bin/bash',
