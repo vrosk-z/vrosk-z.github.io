@@ -36,7 +36,6 @@
     "items": [
       { "name": "Zed", "url": "https://github.com/zed-industries/zed" },
       { "name": "Claude", "url": "https://github.com/anthropics/claude-code" },
-      { "name": "Codex", "url": "https://github.com/openai/codex" },
 
       { "name": "Ghidra", "url": "https://github.com/NationalSecurityAgency/ghidra" },
       { "name": "x64dbg", "url": "https://github.com/x64dbg/x64dbg" }
